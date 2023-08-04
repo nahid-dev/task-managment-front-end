@@ -18,7 +18,7 @@ const AddATask = () => {
       description: data.description,
       status: "working",
     };
-    fetch("http://localhost:5000/addTask", {
+    fetch("https://job-task-backend-nahid-dev.vercel.app/addTask", {
       method: "POST",
       headers: {
         "content-type": "application/json",

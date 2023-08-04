@@ -8,7 +8,9 @@ const TasksList = () => {
   const { data: tasks = [], refetch } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allTasks");
+      const res = await fetch(
+        "https://job-task-backend-nahid-dev.vercel.app/allTasks"
+      );
       const data = await res.json(); // Extract the data from the response
       return data;
     },
@@ -16,7 +18,7 @@ const TasksList = () => {
   // console.log(tasks);
   // task delete
   const handleDeleteTask = (id) => {
-    fetch(`http://localhost:5000/taskDelete/${id}`, {
+    fetch(`https://job-task-backend-nahid-dev.vercel.app/taskDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -29,7 +31,7 @@ const TasksList = () => {
   };
   // UPDATE TASK
   const handleUpdateTask = (id) => {
-    fetch(`http://localhost:5000/updateTask/${id}`, {
+    fetch(`https://job-task-backend-nahid-dev.vercel.app/updateTask/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
