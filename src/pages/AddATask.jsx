@@ -79,7 +79,7 @@ const AddATask = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="flex text-xl font-semibold hover:text-white transition-all duration-300 items-center justify-center hover:bg-emerald-500 border border-emerald-500 w-full md:py-3 rounded"
+            className="flex text-xl font-semibold hover:text-white transition-all duration-300 items-center justify-center hover:bg-emerald-500 border border-emerald-500 w-full py-2 md:py-3 rounded"
           >
             <span>Add</span>{" "}
             <span>
