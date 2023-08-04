@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { HiPlusCircle } from "react-icons/hi";
 
 const AddATask = () => {
@@ -12,6 +13,26 @@ const AddATask = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    const newTask = {
+      title: data.title,
+      description: data.description,
+      status: "working",
+    };
+    fetch("http://localhost:5000/addTask", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newTask),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success("task added");
+          reset();
+        }
+      });
   };
   return (
     <div className="m-1">
@@ -58,7 +79,7 @@ const AddATask = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="flex text-xl font-semibold hover:text-white transition-all duration-300 items-center justify-center hover:bg-emerald-500 border border-emerald-500 w-full md:py-3"
+            className="flex text-xl font-semibold hover:text-white transition-all duration-300 items-center justify-center hover:bg-emerald-500 border border-emerald-500 w-full md:py-3 rounded"
           >
             <span>Add</span>{" "}
             <span>
